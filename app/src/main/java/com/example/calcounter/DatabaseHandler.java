@@ -30,7 +30,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_ID + " INTEGER PRIMARY KEY,"
             + COLUMN_NAME + " TEXT, "
             + COLUMN_BRAND + " TEXT, "
-            + COLUMN_CALORIES + " INTEGER)";
+            + COLUMN_CALORIES + " DOUBLE)";
 
 
 
