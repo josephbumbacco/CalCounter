@@ -1,9 +1,20 @@
 package com.example.calcounter;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.calcounter.Javabean.Food;
+
+import java.util.ArrayList;
+
+/**
+ * Class handles the database and it's methods
+ *
+ * @author Drew Brooks
+ */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Database Version
@@ -30,7 +41,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_ID + " INTEGER PRIMARY KEY,"
             + COLUMN_NAME + " TEXT, "
             + COLUMN_BRAND + " TEXT, "
-            + COLUMN_CALORIES + " INTEGER)";
+            + COLUMN_CALORIES + " DOUBLE)";
 
 
 
@@ -54,5 +65,97 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      *      DATABASE METHODS
      */
 
+    /**
+     * CREATE FOOD
+     *
+     * Method used to create/add a food to the DB
+     * @param food
+     */
+    public void addFood(Food food){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, food.getName());
+        values.put(COLUMN_BRAND, food.getBrand());
+        values.put(COLUMN_CALORIES, food.getCalories());
+        db.insert(TABLE_FOOD, null, values);
+        db.close();
+    }
 
+
+    /**
+     * READ FOOD
+     *
+     * Method used to return single food from DB
+     * @param id
+     * @return food item
+     */
+    public Food getFood(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Food food = null;
+        Cursor cursor = db.query(TABLE_FOOD, new String[]{ COLUMN_ID,
+                COLUMN_NAME, COLUMN_BRAND, COLUMN_CALORIES},COLUMN_ID + "= ?",
+                new String[]{String.valueOf(id)},null,null,null);
+        if(cursor.moveToFirst()){
+            food = new Food(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3));
+        }
+        db.close();
+        return food;
+    }
+
+    /**
+     * READ ALL FOODS
+     *
+     * Method will return all foods from the DB
+     * @return
+     */
+    public ArrayList<Food> getAllFoods(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_FOOD ,
+                null);
+        ArrayList<Food> foods = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            foods.add(new Food(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3)));
+        }
+        db.close();
+        return foods;
+    }
+
+
+    /**
+     * UPDATE FOOD
+     *
+     * Method used to update food, will be used to manually adjust calories on specific food item, contains all values for now
+     * @param food
+     * @return
+     */
+    public int updateFood(Food food){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, food.getName());
+        values.put(COLUMN_BRAND, food.getBrand());
+        values.put(COLUMN_CALORIES, food.getCalories());
+        return db.update(TABLE_FOOD, values, COLUMN_ID + "=?",
+                new String[]{String.valueOf(food.getId())});
+    }
+
+    /**
+     * DELETE FOOD
+     *
+     * Method used to delete a food item from the database
+     * @param food
+     */
+    public void deleteFood(int food){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_FOOD, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(food)});
+        db.close();
+    }
 }
