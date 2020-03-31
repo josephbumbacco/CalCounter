@@ -6,4 +6,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_home">Hello blank home</string>
     <string name="hello_blank_journal">Hello blank journal</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Current_Calorie_Count">Your Current Calorie Count is</string>
 </resources>
