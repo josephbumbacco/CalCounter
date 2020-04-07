@@ -21,6 +21,8 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static com.example.calcounter.MainActivity.fab;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +44,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        fab.hide();
 
         final ViewPager viewPager = view.findViewById(R.id.quoteViewPager);
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
