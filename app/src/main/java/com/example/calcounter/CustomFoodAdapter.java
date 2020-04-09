@@ -17,6 +17,11 @@ import com.example.calcounter.Javabean.Food;
 
 import java.util.ArrayList;
 
+/**
+ * @author Drew Brooks
+ *
+ * Adapter Class that handles the functionality for each food object
+ */
 public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.CustomViewHolder> {
 
     private ArrayList<Food> foods;
@@ -28,7 +33,13 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
     }
 
 
-
+    /**
+     * Method handles inflating the view, and returning the view inside a custom view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return new CustomViewHolder for the current view
+     */
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,10 +56,15 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
         holder.foodCalories.setText(food.getCalories() + "");
     }
 
+    /**
+     *
+     * @return size of foods array
+     */
     @Override
     public int getItemCount() {
         return foods.size();
     }
+
 
     public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
@@ -57,6 +73,11 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
         protected TextView foodCalories;
         protected ImageView addFood;
 
+        /**
+         * Code that places view over food object, allows functionality on object, and adds clicklisteners to components in the object.
+         *
+         * @param view
+         */
         public CustomViewHolder(final View view) {
             super(view);
             this.foodName = view.findViewById(R.id.foodName);
@@ -82,6 +103,12 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
 
         }
 
+        /**
+         * Code handles a long click on a food object, allows user to delete clicked object
+         *
+         * @param v
+         * @return runs delete method if user selects okay, returns false if no
+         */
         @Override
         public boolean onLongClick(View v) {
             new AlertDialog.Builder(context)

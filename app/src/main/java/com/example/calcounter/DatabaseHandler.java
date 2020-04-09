@@ -11,7 +11,7 @@ import com.example.calcounter.Javabean.Food;
 import java.util.ArrayList;
 
 /**
- * Class handles the database and it's methods
+ * Class handles the database and its functionality
  *
  * @author Drew Brooks
  */
@@ -37,6 +37,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String COLUMN_BRAND = "brand";
     public static final String COLUMN_CALORIES = "calories";
 
+    /*
+     * SQL string to create the food table
+     */
     public static final String CREATE_FOOD_TABLE = "CREATE TABLE " + TABLE_FOOD + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY,"
             + COLUMN_NAME + " TEXT, "
@@ -44,15 +47,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_CALORIES + " DOUBLE)";
 
 
-
+    /**
+     * @param context
+     *
+     * Allows access to the db
+     */
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * @param db
+     *
+     * On creation, create food table inside our DB
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_FOOD_TABLE);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

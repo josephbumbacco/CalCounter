@@ -11,6 +11,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+/**
+ * @author Drew Brooks
+ * @author Joseph Bumbacco
+ * Class handles loading the main activity and navigation setup
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static FloatingActionButton fab;

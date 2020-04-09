@@ -28,7 +28,8 @@ import static com.example.calcounter.MainActivity.fab;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author Joseph Bumbacco
+ * Code handles updating the date and time on home screen, as well as functionality for the viewpager and its depth transformer
  */
 public class HomeFragment extends Fragment {
 
@@ -93,6 +94,10 @@ public class HomeFragment extends Fragment {
         dateText.setText(date);
         timeText.setText(time);
 
+        /**
+         * @author Drew Brooks
+         * This section of code handles updating the calorie count on home screen
+         */
         DatabaseHandler db = new DatabaseHandler(getContext());
         ArrayList<Food> foods = db.getAllFoods();
 
@@ -112,6 +117,9 @@ public class HomeFragment extends Fragment {
                 calText.setText(R.string.No_Calorie_Message);
             }
 
+        /**
+         * End of Drew's addition
+         */
 
         return view;
     }

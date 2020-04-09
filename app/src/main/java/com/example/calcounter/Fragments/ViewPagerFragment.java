@@ -13,7 +13,8 @@ import android.widget.TextView;
 import com.example.calcounter.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author Joseph Bumbacco
+ * Class handles creation of View Pager
  */
 public class ViewPagerFragment extends Fragment {
 

@@ -4,7 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-
+/**
+ * @author Drew Brooks
+ *
+ * Food Class - A class designed for our food object
+ */
 public class Food implements Parcelable {
 
 
@@ -17,7 +21,13 @@ public class Food implements Parcelable {
     private Double calories;
 
 
-
+    /**
+     * Constructor method for food
+     *
+     * @param name
+     * @param brand
+     * @param calories
+     */
     public Food(String name, String brand, Double calories) {
         this.name = name;
         this.brand = brand;
@@ -34,6 +44,12 @@ public class Food implements Parcelable {
         this.brand = brand;
         this.calories = calories;
     }
+
+    /**
+     * Getters and Setters for all our food properties
+     *
+     * @return values of properties
+     */
 
     public int getId() {
         return id;
@@ -72,6 +88,12 @@ public class Food implements Parcelable {
         return 0;
     }
 
+    /**
+     * Code below here conforms class to parcelable 
+     *
+     * @param dest
+     * @param flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);

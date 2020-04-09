@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import static com.example.calcounter.MainActivity.fab;
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author Drew Brooks
+ * Class that handles the JournalFragment
  */
 public class JournalFragment extends Fragment {
 
@@ -30,6 +31,14 @@ public class JournalFragment extends Fragment {
     }
 
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     *
+     * Method handles populating the recyclerView with database contents as well as hosts the action button that brings us to our add food fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
