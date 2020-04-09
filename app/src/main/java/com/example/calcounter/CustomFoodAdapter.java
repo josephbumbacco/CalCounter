@@ -73,6 +73,7 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
             //
 
             view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
         }
 
 
@@ -105,6 +106,4 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
             return false;
         }
     }
-
-
 }
