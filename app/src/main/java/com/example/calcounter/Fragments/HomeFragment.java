@@ -14,11 +14,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.calcounter.DatabaseHandler;
+import com.example.calcounter.Javabean.Food;
 import com.example.calcounter.R;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static com.example.calcounter.MainActivity.fab;
@@ -32,6 +35,7 @@ public class HomeFragment extends Fragment {
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private SimpleDateFormat timeFormat;
+    //public static double calAmt = 0.0;
 
 
     public HomeFragment() {
@@ -82,10 +86,31 @@ public class HomeFragment extends Fragment {
 
         TextView dateText = view.findViewById(R.id.date);
         TextView timeText = view.findViewById(R.id.time);
+        TextView calCount = view.findViewById(R.id.calCount);
+        TextView calText = view.findViewById(R.id.calText);
+
 
         dateText.setText(date);
         timeText.setText(time);
 
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<Food> foods = db.getAllFoods();
+
+
+        Double calAmt = 0.0;
+
+        for (Food food : foods){
+            calAmt += food.getCalories();
+        }
+
+
+            if(calAmt > 0.0){
+                calText.setText(R.string.Current_Calorie_Count);
+                calCount.setText(calAmt + "");
+            }else {
+                calCount.setVisibility(View.INVISIBLE);
+                calText.setText(R.string.No_Calorie_Message);
+            }
 
 
         return view;

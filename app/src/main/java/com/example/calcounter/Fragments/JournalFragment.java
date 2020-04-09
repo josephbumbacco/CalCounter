@@ -50,7 +50,6 @@ public class JournalFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.foodsRecyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        db.addFood(new Food("Apple","Gala",200.00));
         return view;
     }
 }

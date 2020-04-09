@@ -8,5 +8,6 @@
     <string name="hello_blank_journal">Hello blank journal</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="Current_Calorie_Count">Your Current Calorie Count is</string>
+    <string name="Current_Calorie_Count">Calories consumed today</string>
+    <string name="No_Calorie_Message">You have not logged any meals today.</string>
 </resources>
