@@ -3,11 +3,14 @@ package com.example.calcounter.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.calcounter.CustomFoodAdapter;
 import com.example.calcounter.DatabaseHandler;
 import com.example.calcounter.Javabean.Food;
 import com.example.calcounter.R;
@@ -42,17 +45,12 @@ public class JournalFragment extends Fragment {
         });
 
         DatabaseHandler db = new DatabaseHandler(getContext());
-
-        /**
-         * Code for later - Leave commented for now - Handles populating recyclerView and adapter
-         */
-
-        //ArrayList<Food> foods = db.getAllFoods();
-        //CustomFoodAdapter adapter = new CustomFoodAdapter(foods, getContext());
-        //RecyclerView recyclerView = view.findViewById(R.id.foodsRecyclerView);
-        //recyclerView.setAdapter(adapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        ArrayList<Food> foods = db.getAllFoods();
+        CustomFoodAdapter adapter = new CustomFoodAdapter(foods, getContext());
+        RecyclerView recyclerView = view.findViewById(R.id.foodsRecyclerView);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        db.addFood(new Food("Apple","Gala",200.00));
         return view;
     }
 }
