@@ -89,7 +89,7 @@ public class Food implements Parcelable {
     }
 
     /**
-     * Code below here conforms class to parcelable 
+     * Code below here conforms class to parcelable
      *
      * @param dest
      * @param flags

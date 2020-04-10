@@ -14,5 +14,15 @@
         android:id="@+id/journalFragment"
         android:name="com.example.calcounter.Fragments.JournalFragment"
         android:label="Journal"
-        tools:layout="@layout/fragment_journal" />
+        tools:layout="@layout/fragment_journal" >
+        <action
+            android:id="@+id/addFoodScreen"
+            app:destination="@id/addFoodFragment"
+            app:enterAnim="@anim/enter_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="com.example.calcounter.Fragments.AddFoodFragment"
+        android:label="Add Food"
+        tools:layout="@layout/fragment_add_food" />
 </navigation>

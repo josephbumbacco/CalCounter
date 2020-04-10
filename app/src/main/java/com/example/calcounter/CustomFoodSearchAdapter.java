@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,14 +19,14 @@ import java.util.ArrayList;
 /**
  * @author Drew Brooks
  *
- * Adapter Class that handles the functionality for each food object
+ * Adapter Class that handles the functionality for each food search result object
  */
-public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.CustomViewHolder> {
+public class CustomFoodSearchAdapter extends RecyclerView.Adapter<CustomFoodSearchAdapter.CustomViewHolder> {
 
     private ArrayList<Food> foods;
     private Context context;
 
-    public CustomFoodAdapter(ArrayList<Food> foods, Context context) {
+    public CustomFoodSearchAdapter(ArrayList<Food> foods, Context context) {
         this.foods = foods;
         this.context = context;
     }
@@ -87,40 +86,28 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
             this.addFood = view.findViewById(R.id.addFood);
             this.editFood = view.findViewById(R.id.editFood);
 
-            addFood.setVisibility(View.GONE);
+            editFood.setVisibility(View.GONE);
 
             //Method here to manually update calories
-            editFood.setOnClickListener(new View.OnClickListener() {
+            addFood.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    final EditText newCal = new EditText(context);
-
-                    newCal.setText(foods.get(getLayoutPosition()).getCalories() + "");
-
                     new AlertDialog.Builder(context)
-                            .setTitle("Edit")
-                            .setMessage("Adjust calories")
-                            .setView(newCal)
-                            .setIcon(R.drawable.ic_add_black_24dp)
-                            .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                            .setTitle("Add Food")
+                            .setMessage("Add " + foods.get(getLayoutPosition()).getName() + " to your journal?")
+                            .setIcon(R.drawable.ic_import_contacts_black_24dp)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    foods.get(getLayoutPosition()).setCalories(Double.parseDouble(newCal.getText().toString()));
-                                    foodCalories.setText(foods.get(getLayoutPosition()).getCalories() + "");
-
                                     DatabaseHandler db = new DatabaseHandler(context);
-                                    db.updateFood(foods.get(getLayoutPosition()));
+                                    db.addFood(foods.get(getLayoutPosition()));
                                     db.close();
                                 }
                             })
-                            .setNegativeButton("Cancel",null)
+                            .setNegativeButton("No",null)
                             .show();
                 }
             });
-
-            view.setOnClickListener(this);
-            view.setOnLongClickListener(this);
         }
 
 
@@ -129,33 +116,8 @@ public class CustomFoodAdapter extends RecyclerView.Adapter<CustomFoodAdapter.Cu
 
         }
 
-        /**
-         * Code handles a long click on a food object, allows user to delete clicked object
-         *
-         * @param v
-         * @return runs delete method if user selects okay, returns false if no
-         */
         @Override
         public boolean onLongClick(View v) {
-            new AlertDialog.Builder(context)
-                    .setTitle("Delete")
-                    .setMessage("Are you sure you want to delete " + foods.get(
-                            getLayoutPosition()).getName() + " from your journal?")
-                    .setIcon(R.drawable.ic_warning_black_24dp)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            DatabaseHandler db = new DatabaseHandler(context);
-                            db.deleteFood(foods.get(
-                                    getLayoutPosition()).getId());
-                            foods.remove(getAdapterPosition());
-                            notifyItemRemoved(getAdapterPosition());
-                            db.close();
-                        }
-                    })
-                    .setNegativeButton("No",null)
-                    .show();
-
             return false;
         }
     }

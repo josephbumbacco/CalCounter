@@ -14,7 +14,7 @@
         android:fontFamily="@font/amiko"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Today you've eaten..."
+        android:text="@string/Journal_Message"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
