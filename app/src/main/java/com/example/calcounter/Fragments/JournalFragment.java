@@ -3,6 +3,7 @@ package com.example.calcounter.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +15,6 @@ import com.example.calcounter.CustomFoodAdapter;
 import com.example.calcounter.DatabaseHandler;
 import com.example.calcounter.Javabean.Food;
 import com.example.calcounter.R;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -48,8 +48,7 @@ public class JournalFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Navigation.findNavController(view).navigate(R.id.addFoodScreen);
             }
         });
 

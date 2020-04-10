@@ -10,4 +10,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Current_Calorie_Count">Calories consumed today</string>
     <string name="No_Calorie_Message">You have not logged any meals today.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Journal_Message">Today you\'ve eaten...</string>
+    <string name="Search_TextView">Search:</string>
+    <string name="EditText_Search">Enter Food Here...</string>
 </resources>
