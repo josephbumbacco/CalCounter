@@ -140,6 +140,7 @@ public class HomeFragment extends Fragment {
             switch (position) {
                 case 0:
                     return ViewPagerFragment.newInstance("You Can Do it!");
+
                 case 1:
                     return ViewPagerFragment.newInstance("Keep Pushing Forward!");
                 case 2:
