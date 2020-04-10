@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">CalCounter</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_journal">Journal</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_home">Hello blank home</string>
+    <string name="hello_blank_journal">Hello blank journal</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Current_Calorie_Count">Calories consumed today</string>
+    <string name="No_Calorie_Message">You have not logged any meals today.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Journal_Message">Today you\'ve eaten...</string>
+    <string name="Search_TextView">Search:</string>
+    <string name="EditText_Search">Enter Food Here...</string>
 </resources>
