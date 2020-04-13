@@ -23,10 +23,39 @@ The home page also consists of a display of your logged consumed calories beneat
   
   ### Navigating the App
   
+  ## Home Screen
+  
+  On the Home screen you'll be greeted by your calories logged for the day. As well as quick access to the date and time. At the top exists a clickable banner that will provide motivational quotes.
+  
+  ![HomePageGif](https://user-images.githubusercontent.com/56166439/79088032-5e66d380-7d0f-11ea-838b-d8a5f77a4bfe.gif)
+  
+  ## Add Food
+  
+  To add a food to your journal. Proceed to the journal page, select the floating action button, to be brought to the database search page. Select the text field, enter your items name, and select the result that best fits your need.
+  
+  ![AddFoodGif](https://user-images.githubusercontent.com/56166439/79087978-219adc80-7d0f-11ea-95c8-d18b34690d2f.gif)
+  
+  ## Delete Food
+  
+  To delete a food from your journal. Proceed to the journal page, select and hold the item you wish to delete, until an alert pops up to verify your request. Select 'Yes' to delete the item, or 'No' to cancel.
+  
+  ![DeleteFoodGif](https://user-images.githubusercontent.com/56166439/79088026-5a3ab600-7d0f-11ea-8191-e1f1fd4f1914.gif)
+  
+  ## Edit Food
+  
+  If you wish to manually change the calories on a particular item. Select the edit icon located on the food items box. Enter a new value and select 'update' to update the value, or cancel to stop.
+  
+  ![EditFoodGif](https://user-images.githubusercontent.com/56166439/79088028-5d35a680-7d0f-11ea-8e1c-45305d622b17.gif)
+  
+  ## Our Database Structure ##
+  
+  For an idea of what information we store, this is the database table make up.
+  
+  ![databaseSchema](https://user-images.githubusercontent.com/56166439/79088564-fd3fff80-7d10-11ea-9e56-4b65f226c041.png)
 
 ## Compatibility
 
-**Operating Systems*
+**Operating Systems**
 * Windows, Mac OS
 
 **SDK API Levels**
