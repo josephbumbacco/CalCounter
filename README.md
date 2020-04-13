@@ -65,6 +65,7 @@ The home page also consists of a display of your logged consumed calories beneat
 **Screen Sizes**
 * 1200x1920; xhdpi (Nexus 7)
 * 1080x2160; 440dpi (Pixel 3)
+* *Smaller screens not recommended - may experience some items being pushed outside of bounds*
 
 **Virtual Device Compat**
 * Nexus 7 API 29
